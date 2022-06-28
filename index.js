@@ -20,7 +20,37 @@ const incrementAction = {
     type: 'INCREMENT',
 }
 
+//Decrement Action
+const decrementAction = {
+    type: 'DECREMENT',
+}
+
 const addUserAction = {
     type: 'ADD_USER',
     payload: [{ name: 'Ayon', email: 'ayonjodder177@gmail.com', password: 'asdfga4' }]
+}
+
+
+// ----------------> REDUCER---------------->
+// Reducers specify how the application's state changes in response to actions sent to the store.
+// Reducers must be pure functions of the state and action parameters passed to them.
+// They must not modify the state or action object passed to them.
+// They must not have any side-effects.
+
+// Reducer for count
+const countReducer = (state = initialCountState, action) => {
+    switch (action.type) {
+        case 'INCREMENT':
+            return {
+                ...state, /* if the state has multiple property then we can use spread operator to copy the state and use the property to update */
+                count: state.count + 1
+            }
+        case 'DECREMENT':
+            return {
+                ...state,
+                count: state.count - 1
+            }
+        default:
+            return state
+    }
 }
